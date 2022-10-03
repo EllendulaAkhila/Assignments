@@ -1,0 +1,162 @@
+JAVASCRIPT DAY2 ASSIGNMENT
+------------------------------
+
+1Q)
+
+function factorial(num) {
+    let fact = 1;
+    for (let i = 1; i <= num; i++) {
+        fact = fact * i;
+    }
+    return fact;
+}
+let result = factorial(8);
+console.log("Factorial value:"+result);
+
+---------------------------------------------------------------------------------------------------------------
+2Q)
+
+sum = (a, b) => {
+    return(a+b)
+  }
+    x= sum(17,33)
+    console.log(x);
+---------------------------------------------------------------------------------------------------------------
+3Q)
+
+function display(...args) {
+    for (const e of args) {
+        console.log(e );
+    }
+
+    console.log(`Total  Number of Arguments Passed : ${args.length}`);
+
+}
+
+display(1, 2, 3, 4, 5, 6, 7, 8);
+
+---------------------------------------------------------------------------------------------------------------
+4Q)
+
+const login=(userName='CT',password='CT')=>
+{
+    console.log(`The user name :${userName}`);
+    console.log(`The password is : ${password}`);
+}
+login("AKHILA","AKHILA123456");
+---------------------------------------------------------------------------------------------------------------
+
+5Q)
+
+const vehicle = {
+    vehicleid: 1987,
+    brand: 'Nexon',
+    model: '2019',
+    varient: 'one year',
+    specification: {
+        firstGear: function () {
+            console.log('Vehicle is in First Gear.');
+
+        },
+        secondGear: function () {
+            console.log('Vehicle is in Second Gear');
+
+        },
+        maxSpeed: 60,
+        changeGear: function () {
+            return (this.firstGear(), this.secondGear());
+
+        },
+
+
+    },
+
+
+}
+console.log(`The vehicle Id is:${vehicle.vehicleid}`);
+console.log(`The vehicle brand is:${vehicle.brand}`);
+console.log(`The vehicle model is:${vehicle.model}`);
+console.log(`The vehicle varient is:${vehicle.varient}`);
+vehicle.specification.changeGear();
+console.log(vehicle.specification.maxSpeed);
+
+---------------------------------------------------------------------------------------------------------------
+
+6Q)
+
+const factorial = (num) => {
+    var fact = 1;
+    for (let i = 1; i <= num; i++) {
+
+        fact = fact * i;
+    }
+    return fact;
+
+}
+
+
+console.log(`Factorial of number is:${factorial(8)}`);
+---------------------------------------------------------------------------------------------------------------
+
+7Q)
+
+const vehicle = {
+    vehicleid: 1987,
+    brand: 'Nexon',
+    model: '2019',
+    varient: 'one year',
+    specification: {
+        firstGear: function () {
+            console.log(' Vehicle is in first gear');
+
+        },
+        secondGear: function () {
+            console.log('Vehicle is in second gear');
+
+        },
+        maxSpeed: 60,
+        changeGear: function () {
+            return (this.firstGear(), this.secondGear());
+
+        },
+
+
+    },
+
+
+}
+const showVehicleDetails = (vehicle) => {
+    console.log(`The vehicleid is:${vehicle.vehicleid}`);
+console.log(`The vehicle brand is:${vehicle.brand}`);
+console.log(`The vehicle model is:${vehicle.model}`);
+console.log(`The vehicle varient is:${vehicle.varient}`);
+console.log(`The maximum speed is:${vehicle.specification.maxSpeed}`);
+}
+showVehicleDetails(vehicle);
+---------------------------------------------------------------------------------------------------------------
+
+8Q)
+
+function sum(a=10,b=10,...c)
+{
+     var result=a+b
+     for( let i=0;i<c.length;i++)
+     {
+        result += c[i]
+     }
+     return result;
+
+    }
+    console.log(`Sum:${sum()}`);
+---------------------------------------------------------------------------------------------------------------
+
+9Q)
+
+function displayMax(arg1, arg2, arg3) {
+    return Math.max(arg1, arg2, arg3);
+}
+
+
+console.log(`The Maximum Number is :${displayMax(17, 24, 18)}`);
+
+---------------------------------------------------------------------------------------------------------------
