@@ -1,0 +1,306 @@
+JAVASCRIPT DAY 1 ASSIGNMENT
+--------------------------------------------
+1Q)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Numbers</title>
+</head>
+<body>
+    <script>
+        let number;
+        let divider, flag;
+        for (number = 5; number <= 50; number++) {
+            for (divider = 2; divider < number; divider++) {
+                if (number % divider == 0) {
+                    flag == 1;
+                    break;
+                }
+                else {
+                    flag = 0;
+                    console.log("Prime numbers are: " + number);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+------------------------------------------------------------------------------------------------
+2Q)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse digits of a number</title>
+</head>
+<body>
+    <script>
+        let reverse = 0, rem;
+        number = window.prompt('Enter a Multi digit number')
+        while (number !== 0) {
+            rem = number % 10;
+            reverse = (reverse * 10) + rem;
+            number = parseInt(number / 10);
+        }
+        console.log("Reverse Number is : " + reverse);
+    </script>
+</body>
+</html>
+
+
+
+
+------------------------------------------------------------------------------------------------------
+3Q)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a String </title>
+</head>
+
+<body>
+    <script>
+        let word, newWord;
+        word = String(prompt("Enter the String"));
+        newWord = word.split("").reverse().join("");
+        console.log("Reverse of " + word + " is : " + newWord);
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+------------------------------------------------------------------------------------------------------
+4Q
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array of 10 numbers</title>
+</head>
+<body>
+    <script>
+        let first = -1, second = -1;
+        let arr = [24, 17, 18, 3, 8, 20, 28, 4, 16, 29]
+        for (let i = 0; i <= arr.length - 1; i++) {
+            if (arr[i] > first) {
+                second = first;
+                first = arr[i];
+            }
+            else if (arr[i] > second && arr[i] != first) {
+                second = arr[i];
+            }
+        }
+        console.log(first);
+        console.log(second);
+    </script>
+</body>
+</html>
+---------------------------------------------------------------------------------------------------
+5Q)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Array of 10 numbers </title>
+</head>
+<body>
+    <script>
+        let array = [24, 17, 18, 3, 8, 20, 28, 4, 16, 29];
+        for (let i = 0; i < array.length; i++) {
+            for (let j = i + 1; j < array.length; j++) {
+                let temp = 0;
+                if (array[i] <= array[j]) {
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        console.log(array);
+    </script>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------
+6Q)
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of 10 even numbers </title>
+</head>
+<body>
+    <script>
+        array = [23, 17, 16, 32, 7, 12, 27, 46, 16, 29];
+        function evenNum(arr1) {
+            result = 0;
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] % 2 == 0) {
+                    result = result + arr1[i];
+                }
+            }
+            if (result == 0) {
+                console.log("No even numbers found");
+            }
+            return result
+        }
+        console.log(evenNum(array));
+    </script>
+</body>
+</html>
+----------------------------------------------------------------------------------------------------------
+7Q)
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        var nums = [1, 5, 6, 10, 13];
+        var factorials = new Array();
+        var result;
+        for (let i = 0; i < nums.length; i++) {
+            let result = getFactorial(nums[i]);
+            console.log(result);
+            factorials.push(result);
+        }
+        function getFactorial(num) {
+            let fact = 1;
+            for (i = 1; i <= num; i++) {
+                fact *= i;
+            }
+            return fact;
+        }
+    </script>
+</body> 
+</html>
+---------------------------------------------------------------------------------------------------------------
+8Q)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        string1 = 'CITIUSTECH';
+        function vowel(str) {
+            vowelDict = { 'A': false, 'E': false, 'I': false, 'O': false, 'U': false }
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] in vowelDict) {
+                    vowelDict[str[i]] = true;
+                }
+            }
+            count = 0;
+            for (let key in vowelDict) {
+                if (vowelDict[key] == true) {
+                    count = count + 1;
+                }
+            }
+            console.log(count);
+        }
+        vowel(string1);
+    </script>
+
+</body>
+
+</html>
+------------------------------------------------------------------------------------------------------
+9Q
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script>
+
+        array = ['akhila', 'ruthiksha', 'syamalika', 'riyanshi','kumud'];
+
+        function arrLastChar(arr1) {
+            for (let i = 0; i < arr1.length; i++) {
+                arr1[i] = arr1[i].slice(0, arr1[i].length - 1) + arr1[i].slice(arr1[i].length - 1).toUpperCase();
+            }
+            console.log(arr1);
+        }
+        arrLastChar(array);
+    </script>
+</body>
+
+</html>
+---------------------------------------------------------------------------------------------------------------------------
+10Q
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function countRepeatingDigit(N) {
+            var result = 0;
+            var cnt = Array(10).fill(0);
+            while (N > 0) {
+                var rem = N % 10;
+                cnt[rem]++;
+                N = Math.floor(N / 10);
+
+            }
+            for (var i = 0; i < 10; i++) {
+                if (cnt[i] > 1) {
+                    result++
+                }
+            }
+            return result;
+        }
+        var N = 7312140905;
+        document.write(countRepeatingDigit(N));
+    </script>
+</body>
+
+</html>
