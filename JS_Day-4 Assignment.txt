@@ -1,0 +1,182 @@
+Javascript Day-4 Assignment
+---------------------------------------------------------------------------------------------------
+1Q)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment4_1</title>
+</head>
+
+<body>
+    <script>
+        for (var i = 1; i < 10; i++) {
+            setTimeout(() => {
+                console.log(i);
+            }, 1000)
+            console.log(i);
+        }
+
+    </script>
+</body>
+
+</html>
+
+---------------------------------------------------------------------------------------------------
+2Q)Write a JS function which accepts an array of 10 numbers. The function must return another array
+   which contains only the odd numbers in the source array. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment4_2</title>
+</head>
+
+<body>
+    <script>
+        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        const oddNumbers = array.filter(number => {
+            return number % 2 !== 0;
+        }
+        );
+
+        console.log(oddNumbers);
+    </script>
+</body>
+
+</html>
+
+---------------------------------------------------------------------------------------------------
+3Q)Refactor the JS function created in assignment 2 so that the user can pass the filter 
+   condition also to the function. For example, only even numbers, only prime numbers, etc. The 
+   condition must NOT be passed as a string. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Assignment4_3</title>
+</head>
+
+<body>
+    <script>
+        const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        const oddNumbers = array.filter(number => {
+            return number % 2 !== 0;
+        }
+        );
+        console.log(oddNumbers);
+
+        const evenNumbers = array.filter(number => {
+            return number % 2 == 0;
+        });
+        console.log(evenNumbers)
+
+        function filter(array, f) {
+            result = [];
+            for (let i = 0; i < array.length; i++) {
+                if (f(array[i])) {
+                    result.push(array[i]);
+                }
+            }
+            console.log(result);
+        }
+        filter(array, a => {
+            if (a <= 1) {
+                return false
+            }
+            for (let i = 2; i < a; i++) {
+                if (a % i == 0) {
+                    return false
+                }
+            }
+            return true
+        })
+    </script>
+</body>
+
+</html>
+
+---------------------------------------------------------------------------------------------------
+4Q)Consider the following scenario: 
+   There are 3 functions, namely, GetVideo(), AddIntro() and AddSummary().Each method returns a 
+   Promise.The Promise when resolved must return a string after 3 seconds like this: 
+   GetVideo()        à returns Got Video 
+   AddIntro()         à returns Intro Added 
+   AddSummary() à returns Summary Added 
+   Invoke the GetVideo() function.
+
+<!DOCTYPE html>
+
+<head>
+    <title>Assignment4_4</title>
+</head>
+
+<body>
+    <script>
+        function GetVideo() {
+            return new Promise(() => {
+                setTimeout(() => {
+                    console.log("Get Video")
+                }, 2000)
+            })
+        }
+        function AddIntro() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("Intro Added")
+                }, 2000)
+            })
+        }
+
+        function AddSummary() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log("Summary Added")
+                }, 2000)
+            })
+        }
+        GetVideo();
+        AddIntro();
+        AddSummary();
+    </script>
+</body>
+
+</html>
+
+---------------------------------------------------------------------------------------------------
+5Q) Rewrite the previous assignment using async and await keywords. 
+
+
+<!DOCTYPE html>
+<head>
+    <title>Assignment4_5</title>
+</head>
+<body>
+    <script>
+        async function myfunction(){
+    function GetVideo(){
+        console.log("Got video");
+    }
+    function AddIntro(){
+        return console.log("Intro added");
+    }
+    function AddSummary(){
+        return console.log("Summary added");
+    }
+    GetVideo();
+    await AddIntro();
+    AddSummary();
+}
+myfunction();
+console.log("Waiting for the await function");
+    </script>
+</body>
+</html>
+
+
