@@ -1,0 +1,228 @@
+                                    JQUERY ASSIGNMENTS DAY2
+-----------------------------------------------------------------------------------------------------------
+1Q)Create an HTML5 page with 3 hyperlinks. Using jQuery set the href attribute of each hyperlink 
+to http://www.google.com, http://www.gmail.com & http://www.makemytrip.com respectively.
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h1>HTML page with 3 Hyperlinks</h1>
+
+    <a id="link1" href="www.example.com">Welcome to google</a><br><br>
+    <a id="link2" href="www.example.com">Welcome to gmail</a><br><br>
+    <a id="link3" href="www.example.com">Welcome to makemytrip</a>
+
+    <script>
+        $('#link1').attr("href", "http://www.google.com");
+        $('#link2').attr("href", "https://www.gmail.com/");
+        $('#link3').attr("href", "https://www.makemytrip.com/flights/airlines.html?ef_id=Y0GXXQAABX75HSF6:20221008152933:s");
+    </script>
+</body>
+
+</html>
+
+------------------------------------------------------------------------------------------------------------
+2Q)Create an HTML5 page with the following UI: On the button click, open a jQuery UI dialog box.
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <style>
+        .ui-widget-header,
+        .ui-button,
+        .ui-state-default {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style=" height: 100px; width: 100px; background-color: rgb(184, 184, 120); padding : 20px;"><br>
+        <p><b>The Dialog</b></p>
+        <button id="btn">CLICK ME!</button>
+    </div>
+
+    <div id="d1">Are you sure you want to do this?</div>
+    <script>
+        $(function () {
+            $('#d1').dialog({
+                autoOpen: false,
+                buttons: {
+                    'Yes I do!': function () { $(this).dialog("close"); },
+                    'NO': function () { }
+                },
+                title: "Attention!!"
+            });
+            $('#btn').click(function () {
+                $('#d1').dialog("open");
+            })
+        });
+    </script>
+
+
+</body>
+
+</html>
+------------------------------------------------------------------------------------------------------------
+3Q)Create an HTML5 page with a jQuery accordian.
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+</head>
+
+<body>
+    <div style="background-color: rgb(149, 223, 225); padding: 20px; padding-right: 0px;">
+        <h1>The Accordion</h1>
+        <div id="myId">
+            <h1>C#</h1>
+            <div>
+                <p>C# is a general-purpose, multi-paradigm programming language. C# encompasses static typing, strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines</p>
+            </div>
+
+            <h1>LINQ</h1>
+            <div>
+                <p>Language-Integrated Query (LINQ) is a powerful set of technologies based on the integration of query capabilities directly into the C# language. LINQ Queries are the first-class language construct in C# .NET, just like classes, methods, events.
+                 The LINQ provides a consistent query experience to query objects (LINQ to Objects), relational databases (LINQ to SQL), and XML (LINQ to XML). </p>
+            </div>
+
+            <h1>JQuery UI</h1>
+            <div>
+                <p>JQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. Whether you're building highly interactive
+                     web applications or you just need to add a date picker to a form control, jQuery UI is the perfect choice. </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#myId').accordion();
+        });
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------
+4Q)Create an HTML5 page with the following: 
+   a.Add jQuery code that fades in the text I am a hidden secret whenever a button is clicked. 
+   b.Change your jQuery code so it slides down the text instead of fading it in. 
+   c.Change the button text to say Click me to toggle a hidden secret! and make the text toggle between fading in 
+     and out each time it is clicked. 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        #div3,
+        #div2 {
+            padding: 5px;
+            text-align: center;
+            background-color: #54c7db;
+            border: solid 1px #1e1717;
+        }
+
+        #div3 {
+            padding: 50px;
+            background-color: #da538e;
+            display: none;
+        }
+
+        #div4 {
+            padding: 10px;
+            background-color: #a63faf;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fade-In</h1>
+    <div id="div1" style="width:80px;height:80px;display:none;background-color:rgb(107, 225, 240); 
+         padding: 20px;">I am a hidden secret.</div>
+    <button id="btn1">Click to See</button><br><br>
+
+    <h1>Slidedown.</h1>
+    <div id="div2">Click here to slidedown</div>
+    <div id="div3">Hello welcome to JQuery Session.</div><br><br>
+
+    <button id="btn2">Click Here!</button><br><br>
+    <div id="div4">Click me to toggle a hidden secret! </div>
+
+    <script>
+        $('#btn1').click(function () {
+            $('#div1').fadeIn('slow');
+        });
+
+        $('#div2').click(function () {
+            $('#div3').slideDown('slow');
+        });
+
+        $('#btn2').click(function () {
+            $('#div4').toggle('slow');
+        });  
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------
+5Q)Create an HTML5 page with the following: 
+<button id="clicker">Click me to hide the hidden secrets!</button> 
+<p class="secret">I am hidden secret #1.</p> 
+<p class="secret">I am hidden secret #2.</p> 
+<p class="secret">I am hidden secret #2.</p> 
+<p>I am <em>not</em> a hidden secret.</p> 
+Add jQuery code to modify the page so that when the user clicks the button, the paragraphs that start with the words I am a hidden secret slide up. 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Assignment5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="clicker">Click me to hide the hidden secrets!</button>
+    <p class="secret">I am hidden secret #1.</p>
+    <p class="secret">I am hidden secret #2.</p>
+    <p class="secret">I am hidden secret #2.</p>
+    <p>I am <em>not</em> a hidden secret.</p>
+
+    <script>
+        $('#clicker').click(function () {
+            $('.secret').slideUp();
+        });
+    </script>
+
+</body>
+
+</html>
+
+--------------------------------------------------------------------------------------------------------------
