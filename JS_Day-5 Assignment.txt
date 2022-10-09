@@ -1,0 +1,323 @@
+					Javascript Day-5 Assignment
+-----------------------------------------------------------------------------------------------------------------------
+
+1Q)Create a JSON file with some sample data & save it on your local drive.Using XmlHttpRequest, display 
+   information from the file in a table format. 
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Displaying .json file as a table.</h2>
+
+    <button type="button" onclick="loadXMLDoc()">Display Table</button>
+    <table id="table_body"></table>
+
+    <script>
+      function loadXMLDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "file.json", true);
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var json = JSON.parse(xhttp.responseText);
+            createTable(json);
+          } else {
+            console.log("Error");
+          }
+        };
+
+        xhttp.send();
+      }
+      function createTable(json) {
+        var tableBody = document.getElementById("table_body");
+
+        // Populate table
+        json.forEach((row) => {
+          var tr = document.createElement("tr");
+
+          Object.keys(row).forEach((cell) => {
+            var td = document.createElement("td");
+            td.textContent = row[cell];
+            tr.appendChild(td);
+          });
+
+          tableBody.appendChild(tr);
+        });
+      }
+    </script>
+  </body>
+</html>
+
+file.json
+https://jsonplaceholder.typicode.com/users/
+-----------------------------------------------------------------------------------------------------------------------
+
+2Q)Have a look at the following URL. It contains some sample REST APIs: 
+	https://jsonplaceholder.typicode.com/ 
+
+-----------------------------------------------------------------------------------------------------------------------
+
+3Q)Create an HTML5 page containing a textbox and a button titled Get Details.The user will enter a user id in
+   the textbox. On the button click, make a GET request using the fetch API to the following URL: 
+		https://jsonplaceholder.typicode.com/users/ 
+   Pass the user id entered in the textbox as a query string & display the information about the user in a 
+   <div> element. 
+
+   <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Get Details</title>
+</head>
+
+<body>
+    <label for="search">Enter User ID:</label>
+    <input type="search" id="search" name="search" />
+    <br>
+    <button onclick="getData()">Get details</button>
+    <br>
+    <div id="myId"></div>
+    <script>
+        function getData() {
+            let uname = document.getElementById("search").value;
+            data = fetch("https://jsonplaceholder.typicode.com/users/" + uname)
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------
+
+4Q)Create an HTML5 page. Input the user id, name, username and email in different textboxes. On a button
+   click, write a JS function which makes a POST request to the URL mentioned in assignment 3. Check by 
+   hitting the same URL to see if the new record was added. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment4</title>
+</head>
+
+<body>
+    <label for="search">Enter User ID:</label>
+    <input type="search" id="search" name="search" />
+    <br>
+    <label for="name">Enter Name:</label>
+    <input type="search" id="name" name="name" />
+    <br>
+    <label for="Username-">Enter User Name:</label>
+    <input type="search" id="username" name="username" />
+    <br>
+    <label for="email">Enter Email:</label>
+    <input type="email" id="email" name="email" />
+    <br>
+    <button onclick="getData()">Post details</button>
+    <br>
+    <div id="myId"></div>
+    <script>
+        function getData() {
+            let uId = document.getElementById("search").value;
+            let nam = document.getElementById("name").value;
+            let Uname = document.getElementById("username").value;
+            let eId = document.getElementsById("email").value;
+
+            fetch("https://jsonplaceholder.typicode.com/users/", {
+                method: "POST",
+                body: JSON.stringify({
+                    id: uId,
+                    name: nam,
+                    username: Uname,
+                    email: eId,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+
+            fetch("https://jsonplaceholder.typicode.com/users/" + uId)
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------
+
+5Q)Add another button which makes a PUT request to the same URL. In this case, the name, username or email
+   might be modified. Pass the entered id as a query string.Check by hitting the same URL to see if the record
+   was modified or not.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment5</title>
+</head>
+
+<body>
+    <label for="search">Enter User ID:</label>
+    <input type="search" id="search" name="search" />
+    <br /><br />
+    <label for="name">Enter Name:</label>
+    <input type="search" id="name" name="name" />
+    <br /><br />
+    <label for="Username">Enter User Name:</label>
+    <input type="search" id="username" name="username" />
+    <br /><br />
+
+    <button onclick="getData()">Post details</button>
+    <br />
+    <button onclick="getModifiedData()">click to check if data been modified</button>
+    <br /><br />
+    <div id="myId"></div>
+    <div id="my"></div>
+    <script>;
+        function getData() {
+            let uId = document.getElementById("search").value;
+            let nam = document.getElementById("name").value;
+            let Uname = document.getElementById("username").value;
+            fetch("https://jsonplaceholder.typicode.com/users/", {
+                method: "POST",
+                body: JSON.stringify({
+                    id: uId,
+                    name: nam,
+                    username: Uname
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+
+        function getModifiedData() {
+            let uId = document.getElementById("search").value;
+            let nam = document.getElementById("name").value;
+            let Uname = document.getElementById("username").value;
+            fetch("https://jsonplaceholder.typicode.com/users/" + uId, {
+                method: "PUT",
+                body: JSON.stringify({
+                    id: uId,
+                    name: nam,
+                    username: Uname
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("my").innerHTML = JSON.stringify(json);
+                })
+        };
+
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------
+
+6Q)Add another button which makes a DELETE request to the same URL. In this case, the request must delete 
+   the record with the specified id entered in the textbox. Check by hitting the same URL to see if the 
+   record was deleted or not. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment6</title>
+</head>
+
+<body>
+    <label for="search">Enter User ID:</label>
+    <input type="search" id="search" name="search" />
+    <br>
+    <label for="name">Enter Name:</label>
+    <input type="search" id="name" name="name" />
+    <br>
+    <label for="Username">Enter User Name:</label>
+    <input type="search" id="userName" name="username" />
+    <br>
+
+    <button onclick="getData()">Post details</button>
+    <br>
+    <button onclick="getModifiedData()">click to check if data been modified</button>
+    <br>
+    <button onclick="getDeletedData()">click to delete the Content</button>
+    <br>
+    <div id="myId"></div>
+    <script>
+        function getData() {
+            let uId = document.getElementById("search").value;
+            let nam = document.getElementById("name").value;
+            let Uname = document.getElementById("username").value;
+            fetch("https://jsonplaceholder.typicode.com/users/", {
+                method: "POST",
+                body: JSON.stringify({
+                    id: uId,
+                    name: nam,
+                    username: Uname,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+        function getModifiedData() {
+            let uId = document.getElementById("search").value;
+            let nam = document.getElementById("name").value;
+            let Uname = document.getElementById("username").value;
+            fetch("https://jsonplaceholder.typicode.com/users/" + uId, {
+                method: "PUT",
+                body: JSON.stringify({
+                    id: uId,
+                    name: nam,
+                    username: Uname,
+                }),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+
+        function getDeletedData() {
+            let uId = document.getElementById("search").value;
+            fetch("https://jsonplaceholder.typicode.com/users" + uId, {
+                method: "DELETE",
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    document.getElementById("myId").innerHTML = JSON.stringify(json);
+                });
+        }
+    </script>
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------------------
