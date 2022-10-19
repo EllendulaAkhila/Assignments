@@ -1,0 +1,155 @@
+                                         JQUERY ASSIGNMENTS DAY3
+-----------------------------------------------------------------------------------------------------------
+1Q)Hit the following URL & observe the output: 
+    https://jsonplaceholder.typicode.com/todos 
+-----------------------------------------------------------------------------------------------------------
+2Q)Create an HTML5 page which makes a jQuery AJAX GET request to the above-mentioned URL & display 
+   all titles inside a dropdown list. 
+
+<!DOCTYPE html>
+
+<head>
+
+    <title>AJAX GET</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Dropdown list of all Titles present in URL</h2>
+    <div id="display">
+        <select name="value" id="selection" list="datalist"></select>
+    </div>
+    <script>
+        $.getJSON('https://jsonplaceholder.typicode.com/todos',
+            function (res) {
+                res.forEach(element => {
+                    title = document.createTextNode(element.title);
+                    myOption = document.createElement('option');
+                    myOption.appendChild(title);
+                    $("#selection").append(myOption);
+                });
+
+            })
+    </script>
+
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------------------------------------
+3Q)Create an HTML5 page which makes a jQuery AJAX GET request to the above-mentioned URL. Display the title
+   of all completed todos in a listbox and all non-completed todos as a numeric bulleted list. 
+
+<!DOCTYPE html>
+
+<head>
+    <title>Assignment3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h4>Completed todo-list</h4> <select id="selection"></select> <br><br>
+    <h4>Incomplete todo-list </h4>
+    <ol id="orderedlist"></ol>
+    <script>
+        $.getJSON('https://jsonplaceholder.typicode.com/todos',
+            function (res) {
+                res.forEach(element => {
+                    if (element.completed === false) {
+                        myList = document.createElement('li');
+                        noTodo = document.createTextNode(element.title);
+                        myList.appendChild(noTodo);
+                        $("#orderedlist").append(myList);
+                        console.log(element);
+
+
+                    }
+                    else if (element.completed === true) {
+                        options = document.createElement('option');
+                        yesTodo = document.createTextNode(element.title);
+                        options.appendChild(yesTodo);
+                        $("#selection").append(options);
+                    }
+                });
+
+            })
+    </script>
+
+</body>
+
+</html>
+-----------------------------------------------------------------------------------------------------------
+4Q)Create an HTML5 page which inputs the following details: 
+    a.userid                à must be a textbox 
+    b.title                 à must be a textbox 
+    c.completed             à must be a checkbox 
+    Make a jQuery POST request to the above-mentioned URL & check if the record as been added. 
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Assignment4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+    UserId :<input type="text" id="userid">
+    Title :<input type="text" id="title">
+    Completed : <input type="text" id="completed">
+    <button type="submit" id="clicker">Post</button>
+</body>
+<script>
+    $("#clicker").on('click', function () {
+        $.post('https://jsonplaceholder.typicode.com/todos',
+            {
+                userid: $("#userid").val(),
+                title: $("#title").val(),
+                completed: $("#completed").val(),
+            },
+            function (res) {
+                console.log(res.userid);
+                console.log(res.title);
+                console.log(res.completed);
+            })
+    })
+</script>
+
+</html>  
+ 
+ ----------------------------------------------------------------------------------------------------------
+ 5Q)Create an HTML5 page. Create a <div> element with the id mydiv. Using the jQuery load() function, load 
+    the HTML5 page created in assignment 3 inside the <div> element. 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <title>Assignment5</title>
+</head>
+
+<body>
+    <div style="margin-top:10px ;">
+        <button>Click me</button>
+        <div id="mydiv"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                $('#mydiv').load('JQuery3.html');
+            })
+        })
+    </script>
+</body>
+
+</html>
+-----------------------------------------------------------------------------------------------------------
+ 
+
